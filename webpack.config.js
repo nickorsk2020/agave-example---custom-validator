@@ -14,9 +14,16 @@ module.exports = {
         publicPath: '/'
     },
     plugins: [
+        new webpack.optimize.UglifyJsPlugin({
+            output: {
+                comments: false
+            },
+            compressor: {
+                warnings: false,
+                screw_ie8: true
+            }
+        }),
         new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin(),
         new webpack.DefinePlugin({
           'process.env.NODE_ENV': JSON.stringify('production')
         })
